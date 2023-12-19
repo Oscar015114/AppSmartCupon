@@ -1,8 +1,15 @@
 package com.example.appsmartcupon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.appsmartcupon.databinding.ActivityLoginBinding
+import com.example.appsmartcupon.poko.Cliente
+import com.example.appsmartcupon.poko.RespuestaLogin
+import com.example.appsmartcupon.util.Constantes
+import com.google.gson.Gson
+import com.koushikdutta.ion.Ion
 
 class LoginActivity : AppCompatActivity() {
 
@@ -14,5 +21,65 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.btIniciarSesion.setOnClickListener{
+            val correo = binding.etCorreo.text.toString()
+            val contrasenia = binding.etPassword.text.toString()
+
+            if(validarCamposLogin(correo,contrasenia)){
+                realizarPeticionLogin(correo, contrasenia)
+            }
+        }
+    }
+
+    fun validarCamposLogin(correo: String, contrasenia: String): Boolean{
+        var isValido = true
+        if(correo.isEmpty()){
+            isValido = false
+            binding.etCorreo.error =" Correo electronico obligatorio"
+        }
+        if(contrasenia.isEmpty()){
+            isValido = false
+            binding.etPassword.error ="contraseña obligatoria"
+        }
+        return isValido
+    }
+
+    fun realizarPeticionLogin(correo: String, contrasenia: String){
+        Ion.getDefault(this@LoginActivity).conscryptMiddleware.enable(false)
+        Ion.with(this@LoginActivity).load("POST", Constantes.URL_WS + "autenticacion/loginMobile")
+            .setHeader("Content-Type","application/x-www-form-urlencoded")
+            .setBodyParameter("correo", correo).setBodyParameter("contrasenia", contrasenia).asString()
+            .setCallback{ e, result ->
+                if(e == null && result != null){
+                 serializarRespuestaLogin(result)
+                }else{
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "Error en la peticion,porfavor intentelo mas tarde",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            }
+
+    }
+
+    fun serializarRespuestaLogin(json: String){
+        val gson = Gson()
+        var respuesta: RespuestaLogin = gson.fromJson(json, RespuestaLogin::class.java)
+        Toast.makeText(this@LoginActivity, respuesta.contenido, Toast.LENGTH_LONG).show()
+        if(!respuesta.error){
+          irPantallaPrincipal(respuesta.clienteSesion)
+        }
+    }
+
+    fun irPantallaPrincipal(cliente : Cliente){
+        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+        val gson = Gson()
+        val cadenaJson: String = gson.toJson(cliente)
+        intent.putExtra("cliente", cadenaJson)
+
+        startActivity(intent)
+        finish()
     }
 }
