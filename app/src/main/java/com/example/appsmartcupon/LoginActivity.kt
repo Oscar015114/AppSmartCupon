@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun realizarPeticionLogin(correo: String, contrasenia: String){
         Ion.getDefault(this@LoginActivity).conscryptMiddleware.enable(false)
-        Ion.with(this@LoginActivity).load("POST", Constantes.URL_WS + "autenticacion/loginMobile")
+        Ion.with(this@LoginActivity).load("POST", Constantes.URL_WS + "autenticacion/iniciarSesionMobile")
             .setHeader("Content-Type","application/x-www-form-urlencoded")
             .setBodyParameter("correo", correo).setBodyParameter("contrasenia", contrasenia).asString()
             .setCallback{ e, result ->
@@ -69,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
         var respuesta: RespuestaLogin = gson.fromJson(json, RespuestaLogin::class.java)
         Toast.makeText(this@LoginActivity, respuesta.contenido, Toast.LENGTH_LONG).show()
         if(!respuesta.error){
-          irPantallaPrincipal(respuesta.clienteSesion)
+          irPantallaPrincipal(respuesta.cliente)
         }
     }
 
