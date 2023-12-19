@@ -29,6 +29,11 @@ class LoginActivity : AppCompatActivity() {
                 realizarPeticionLogin(correo, contrasenia)
             }
         }
+        binding.btCrearCuenta.setOnClickListener{
+            val intent = Intent(this@LoginActivity, CrearCuentaActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun validarCamposLogin(correo: String, contrasenia: String): Boolean{
