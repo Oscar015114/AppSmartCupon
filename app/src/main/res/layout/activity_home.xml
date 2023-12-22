@@ -71,6 +71,7 @@
             android:textStyle="bold"/>
 
         <Button
+            android:id="@+id/btnCategorias"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text=">"
@@ -106,6 +107,7 @@ promociones"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btnListaPromociones"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text=">"
@@ -142,6 +144,7 @@ promociones"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btnBusquedaPromociones"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text=">"
