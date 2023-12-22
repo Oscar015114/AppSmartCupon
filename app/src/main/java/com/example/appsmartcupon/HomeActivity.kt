@@ -17,6 +17,12 @@ class HomeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.btnHome.setOnClickListener{
+            val irHome = Intent(this@HomeActivity, HomeActivity::class.java)
+            startActivity(irHome)
+            finish()
+        }
+
         binding.btnCliente.setOnClickListener{
             val irCliente = Intent(this@HomeActivity, EditarCuentaActivity::class.java)
             startActivity(irCliente)
