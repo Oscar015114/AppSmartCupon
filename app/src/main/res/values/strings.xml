@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppSmartCupon</string>
+    <string name="parrafo_login">Nos alegra verte aquí de nuevo, por favor ingresa tu nombre y contraseña.</string>
+    <string name="titulo_login">¡Bienvenido de vuelta!</string>
 </resources>
