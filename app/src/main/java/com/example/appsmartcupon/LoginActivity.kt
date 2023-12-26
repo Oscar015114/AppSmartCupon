@@ -8,6 +8,7 @@ import com.example.appsmartcupon.databinding.ActivityLoginBinding
 import com.example.appsmartcupon.poko.Cliente
 import com.example.appsmartcupon.poko.RespuestaLogin
 import com.example.appsmartcupon.util.Constantes
+import com.example.appsmartcupon.util.Utilidades
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 
@@ -37,16 +38,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun validarCamposLogin(correo: String, contrasenia: String): Boolean{
-        var isValido = true
-        if(correo.isEmpty()){
-            isValido = false
-            binding.etCorreo.error =" Correo electronico obligatorio"
+        var camposValidos = true
+
+        if(correo.isEmpty() || Utilidades.validarCadena(correo, Utilidades.EMAIL_REGEX)){
+            camposValidos = false
+            binding.etCorreo.error = Constantes.CAMPOS_OBLIGATORIOS
         }
+
         if(contrasenia.isEmpty()){
-            isValido = false
-            binding.etPassword.error ="contraseña obligatoria"
+            camposValidos = false
+            binding.etPassword.error = Constantes.CAMPOS_OBLIGATORIOS
         }
-        return isValido
+
+        return camposValidos
     }
 
     fun realizarPeticionLogin(correo: String, contrasenia: String){
@@ -60,13 +64,11 @@ class LoginActivity : AppCompatActivity() {
                 }else{
                     Toast.makeText(
                         this@LoginActivity,
-                        "Error en la peticion,porfavor intentelo mas tarde",
+                        "Error en la peticion, porfavor intentelo mas tarde",
                         Toast.LENGTH_LONG
                     ).show()
                 }
-
             }
-
     }
 
     fun serializarRespuestaLogin(json: String){

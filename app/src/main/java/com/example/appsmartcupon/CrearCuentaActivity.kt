@@ -12,6 +12,7 @@ import com.example.appsmartcupon.poko.Cliente
 import com.example.appsmartcupon.poko.Mensaje
 import com.example.appsmartcupon.poko.RespuestaLogin
 import com.example.appsmartcupon.util.Constantes
+import com.example.appsmartcupon.util.Utilidades
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 
@@ -26,21 +27,73 @@ class CrearCuentaActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btCrearCuenta.setOnClickListener {
-            enviarDatos()
+
+            val nombre = binding.etNombre.text.toString()
+            val apellidoPaterno = binding.etApellidoPaterno.text.toString()
+            val apellidoMaterno = binding.etApellidoMaterno.text.toString()
+            val telefono = binding.etTelefono.text.toString()
+            val correo = binding.etCorreo.text.toString()
+            val calle = binding.etCalle.text.toString()
+            val numero = binding.etNumero.text.toString()
+            val contrasenia = binding.etContrasenia.text.toString()
+            val fechaNacimiento = binding.etFechaNacimiento.text.toString()
+
+            if (this.camposVacios(nombre, apellidoPaterno, apellidoMaterno, telefono, correo, calle, numero, contrasenia, fechaNacimiento)) {
+                enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, correo, calle, numero, contrasenia, fechaNacimiento)
+            }
         }
     }
 
-    private fun enviarDatos() {
+    private fun camposVacios(
+        nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
+        calle: String, numero: String, contrasenia: String, fechaNacimiento: String): Boolean {
+        var camposValidos = true
 
-        val nombre = binding.etNombre.text.toString()
-        val apellidoPaterno = binding.etApellidoPaterno.text.toString()
-        val apellidoMaterno = binding.etApellidoMaterno.text.toString()
-        val telefono = binding.etTelefono.text.toString()
-        val correo = binding.etCorreo.text.toString()
-        val calle = binding.etCalle.text.toString()
-        val numero = binding.etNumero.text.toString()
-        val contrasenia = binding.etContrasenia.text.toString()
-        val fechaNacimiento = binding.etFechaNacimiento.text.toString()
+        if (nombre.isEmpty()) {
+            binding.etNombre.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (apellidoPaterno.isEmpty()) {
+            binding.etApellidoPaterno.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (apellidoMaterno.isEmpty()) {
+            binding.etApellidoMaterno.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (telefono.isEmpty() || Utilidades.validarCadena(telefono, Utilidades.TELEFONO_REGEX)) {
+            binding.etTelefono.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (correo.isEmpty() || Utilidades.validarCadena(correo, Utilidades.EMAIL_REGEX)) {
+            binding.etCorreo.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (calle.isEmpty()) {
+            binding.etCalle.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (numero.isEmpty() || Utilidades.validarCadena(numero, Utilidades.NUMERO_REGEX)) {
+            binding.etNumero.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (contrasenia.isEmpty()) {
+            binding.etContrasenia.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+        if (fechaNacimiento.isEmpty() || Utilidades.validarFecha(fechaNacimiento)) {
+            binding.etFechaNacimiento.error = Constantes.CAMPOS_OBLIGATORIOS
+            camposValidos = false
+        }
+
+        return camposValidos
+    }
+
+    private fun enviarDatos(
+        nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
+        calle: String, numero: String, contrasenia: String, fechaNacimiento: String) {
+
+
 
         Ion.with(this@CrearCuentaActivity)
             .load("POST", Constantes.URL_WS + "clientes/registrarCliente")
@@ -63,7 +116,7 @@ class CrearCuentaActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this@CrearCuentaActivity,
-                        "Por el momento no hay conexion d",
+                        "Por el momento no hay conexion. ¡Intentelo mas tarde!",
                         Toast.LENGTH_LONG
                     ).show()
                 }

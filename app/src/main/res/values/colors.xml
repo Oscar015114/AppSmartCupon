@@ -10,4 +10,5 @@
 
     <color name="negro">#171717</color>
     <color name="gris">#393E46</color>
+    <color name="gris_claro">#EEEEEE</color>
 </resources>

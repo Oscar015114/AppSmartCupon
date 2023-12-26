@@ -1,5 +1,22 @@
 <resources>
     <string name="app_name">AppSmartCupon</string>
-    <string name="parrafo_login">Nos alegra verte aquí de nuevo, por favor ingresa tu nombre y contraseña.</string>
+
+    <string name="parrafo_login">Nos alegra verte aquí de nuevo, por favor ingresa tu correo y contraseña.</string>
     <string name="titulo_login">¡Bienvenido de vuelta!</string>
+    <string name="correo_login">Correo electronico</string>
+    <string name="contrasenia_login">Contraseña</string>
+    <string name="ingresar_login">Ingresar</string>
+
+    <string name="regresar_registrar">Regresar</string>
+    <string name="titulo_registrar">Crea una cuenta</string>
+    <string name="parrafo_registrar">¡Crear tu cuenta no tomará mas de dos minutos!</string>
+    <string name="nombre_registrar">Nombre</string>
+    <string name="apellidop_registrar">Apellido paterno</string>
+    <string name="apellidom_registrar">Apellido materno</string>
+    <string name="telefono_registrar">Teléfono</string>
+    <string name="calle_registrar">Calle</string>
+    <string name="numero_registrar">Número</string>
+    <string name="fecha_registrar">Fecha de Nacimiento. Ej. 2023-12-25</string>
+    <string name="crear_cuenta_registrar">Crear cuenta</string>
+
 </resources>

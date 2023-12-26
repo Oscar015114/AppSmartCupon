@@ -41,24 +41,31 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
-        android:hint="correo electronico"
-        android:paddingVertical="15dp"
-        android:paddingHorizontal="10dp"
+        android:drawableStart="@drawable/ic_emai"
+        android:drawablePadding="12dp"
+        android:hint="@string/correo_login"
+        android:padding="15dp"
         android:textColor="@color/gris"
         android:fontFamily="@font/poppins_regular"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:background="@drawable/custom_input"
+        />
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:hint="contraseña"
-        android:paddingVertical="15dp"
-        android:paddingHorizontal="10dp"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="12dp"
+        android:hint="@string/contrasenia_login"
+        android:padding="15dp"
         android:textColor="@color/gris"
         android:fontFamily="@font/poppins_regular"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:background="@drawable/custom_input"
+        />
+
     <Button
         android:id="@+id/btIniciarSesion"
         android:layout_width="match_parent"
@@ -66,10 +73,12 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:paddingVertical="10dp"
-        android:text="iniciar sesion"
-        android:textSize="18dp"
+        android:text="@string/ingresar_login"
+        android:textSize="20dp"
         android:textColor="@color/negro"
         android:fontFamily="@font/poppins_semi_bold"
+        android:textAllCaps="false"
+        android:letterSpacing="0"
         />
 
     <Button
@@ -82,10 +91,10 @@
         android:backgroundTint="@color/negro"
         android:textColor="@color/white"
         android:paddingVertical="10dp"
-        android:textSize="18dp"
+        android:textSize="20dp"
         android:fontFamily="@font/poppins_semi_bold"
+        android:textAllCaps="false"
+        android:letterSpacing="0"
         />
-
-
 
 </LinearLayout>
