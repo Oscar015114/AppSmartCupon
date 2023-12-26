@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoriasActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="11dp"
+            android:layout_height="17dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="     Detalle de promoción"
+                android:textSize="24dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <ImageView
+            android:id="@+id/img_promocion"
+            android:layout_width="296dp"
+            android:layout_height="179dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_promocion" />
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_detallePromociones"
+            android:layout_width="match_parent"
+            android:layout_height="350dp" />
+
+        <TextView
+            android:id="@+id/tv_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="La sucursal no cuenta por el momento con una promocion asignada"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
