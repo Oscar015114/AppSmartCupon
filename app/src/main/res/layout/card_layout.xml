@@ -5,7 +5,7 @@
     android:layout_margin="12dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="399dp"
         android:layout_height="133dp"
         android:padding="10dp">
 
@@ -17,8 +17,8 @@
             android:src="@drawable/img"></ImageView>
 
         <TextView
-            android:id="@+id/id_categoria"
-            android:layout_width="220dp"
+            android:id="@+id/itemCategoria"
+            android:layout_width="106dp"
             android:layout_height="49dp"
             android:layout_margin="16dp"
             android:textColor="@color/black"
