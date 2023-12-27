@@ -47,6 +47,16 @@ class HomeActivity : AppCompatActivity() {
             startActivity(irCategorias)
             finish()
         }
+        binding.btnListaPromociones.setOnClickListener{
+            val irListaPromociones = Intent(this@HomeActivity, ListaPromocionesActivity::class.java)
+            startActivity(irListaPromociones)
+            finish()
+        }
+        binding.btnBusquedaPromociones.setOnClickListener{
+            val irBusquedaPromociones = Intent(this@HomeActivity, BusquedaPromocionesActivity::class.java)
+            startActivity(irBusquedaPromociones)
+            finish()
+        }
     }
 
     private fun serializarCliente(json : String){
