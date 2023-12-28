@@ -19,4 +19,15 @@
     <string name="fecha_registrar">Fecha de Nacimiento. Ej. 2023-12-25</string>
     <string name="crear_cuenta_registrar">Crear cuenta</string>
 
+    <string name="parrafo_home">Home</string>
+    <string name="titulo_home">Hola 👋. Encuentra las mejores promociones.</string>
+    <string name="categoria_home">Categorías</string>
+    <string name="lista_promocion_home">Lista de promociones</string>
+    <string name="busqueda_promocion_home">Búsqueda de promociones</string>
+
+    <string name="titulo_editar">Modificar cuenta</string>
+    <string name="parrafo_editar">¡Modificar tu cuenta no tomará mas de dos minutos!</string>
+    <string name="boton_editar">Editar cuenta</string>
+
+    <string name="titulo_categoria">Categorías</string>
 </resources>

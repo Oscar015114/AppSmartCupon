@@ -79,6 +79,7 @@
         android:fontFamily="@font/poppins_semi_bold"
         android:textAllCaps="false"
         android:letterSpacing="0"
+        android:backgroundTint="@color/amarillo"
         />
 
     <Button

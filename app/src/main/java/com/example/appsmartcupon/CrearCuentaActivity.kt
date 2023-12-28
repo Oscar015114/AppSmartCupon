@@ -17,14 +17,19 @@ import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 
 class CrearCuentaActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCrearCuentaBinding
 
+    private lateinit var binding: ActivityCrearCuentaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearCuentaBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        crearEventos()
+    }
+
+    fun crearEventos() {
 
         binding.btCrearCuenta.setOnClickListener {
 
@@ -42,9 +47,10 @@ class CrearCuentaActivity : AppCompatActivity() {
                 enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, correo, calle, numero, contrasenia, fechaNacimiento)
             }
         }
+
     }
 
-    private fun camposVacios(
+    fun camposVacios(
         nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
         calle: String, numero: String, contrasenia: String, fechaNacimiento: String): Boolean {
         var camposValidos = true
@@ -89,11 +95,9 @@ class CrearCuentaActivity : AppCompatActivity() {
         return camposValidos
     }
 
-    private fun enviarDatos(
+    fun enviarDatos(
         nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
         calle: String, numero: String, contrasenia: String, fechaNacimiento: String) {
-
-
 
         Ion.with(this@CrearCuentaActivity)
             .load("POST", Constantes.URL_WS + "clientes/registrarCliente")
@@ -124,7 +128,7 @@ class CrearCuentaActivity : AppCompatActivity() {
 
     }
 
-    private fun validarResultadosPeticiones(json: String) {
+    fun validarResultadosPeticiones(json: String) {
         val gson = Gson();
         var respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
         Toast.makeText(this@CrearCuentaActivity, respuesta.contenido, Toast.LENGTH_LONG).show()
@@ -140,6 +144,5 @@ class CrearCuentaActivity : AppCompatActivity() {
             ).show()
         }
     }
-
 
 }

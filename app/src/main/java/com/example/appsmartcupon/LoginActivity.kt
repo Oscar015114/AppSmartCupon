@@ -22,6 +22,11 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        crearEventos()
+    }
+
+    fun crearEventos() {
+
         binding.btIniciarSesion.setOnClickListener{
             val correo = binding.etCorreo.text.toString()
             val contrasenia = binding.etPassword.text.toString()
@@ -30,11 +35,12 @@ class LoginActivity : AppCompatActivity() {
                 realizarPeticionLogin(correo, contrasenia)
             }
         }
-        binding.btCrearCuenta.setOnClickListener{
+
+        binding.btCrearCuenta.setOnClickListener {
             val intent = Intent(this@LoginActivity, CrearCuentaActivity::class.java)
             startActivity(intent)
-            finish()
         }
+
     }
 
     fun validarCamposLogin(correo: String, contrasenia: String): Boolean{
@@ -74,7 +80,9 @@ class LoginActivity : AppCompatActivity() {
     fun serializarRespuestaLogin(json: String){
         val gson = Gson()
         var respuesta: RespuestaLogin = gson.fromJson(json, RespuestaLogin::class.java)
+
         Toast.makeText(this@LoginActivity, respuesta.contenido, Toast.LENGTH_LONG).show()
+
         if(!respuesta.error){
           irPantallaPrincipal(respuesta.cliente)
         }
