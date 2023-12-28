@@ -52,8 +52,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(activityCategoria)
         }
         binding.btnListaPromociones.setOnClickListener{
+            val irListaPromociones = Intent(this@HomeActivity, ListaPromocionesActivity::class.java)
+            startActivity(irListaPromociones)
         }
         binding.btnBusquedaPromociones.setOnClickListener{
+            val irBusquedaPromociones = Intent(this@HomeActivity, BusquedaPromocionesActivity::class.java)
+            startActivity(irBusquedaPromociones)
         }
     }
 
