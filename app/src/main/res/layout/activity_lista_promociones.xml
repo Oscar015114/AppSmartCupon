@@ -1,56 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoriasActivity">
-
+    tools:context=".ListaPromocionesActivity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="16dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="      Promociones"
-                android:textSize="34dp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_promociones"
-            android:layout_width="match_parent"
-            android:layout_height="350dp" />
-
         <TextView
-            android:id="@+id/tv_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="La sucursal no cuenta por el momento con una promocion asignada"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/titulo_promocion"
+            android:textColor="@color/negro"
+            android:textSize="25dp" />
 
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/error_promocion"
+            android:textColor="@color/gris"
+            android:textSize="16dp" />
     </LinearLayout>
 
-</ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_promociones"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp" />
+</LinearLayout>

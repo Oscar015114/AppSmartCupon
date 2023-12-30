@@ -19,10 +19,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var cliente: Cliente
 
-    companion object {
-        private const val KEY_CLIENTE = "cliente_key"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,10 +46,6 @@ class HomeActivity : AppCompatActivity() {
         binding.btnCategorias.setOnClickListener{
             val activityCategoria = Intent(this@HomeActivity, CategoriasActivity::class.java)
             startActivity(activityCategoria)
-        }
-        binding.btnListaPromociones.setOnClickListener{
-            val irListaPromociones = Intent(this@HomeActivity, ListaPromocionesActivity::class.java)
-            startActivity(irListaPromociones)
         }
         binding.btnBusquedaPromociones.setOnClickListener{
             val irBusquedaPromociones = Intent(this@HomeActivity, BusquedaPromocionesActivity::class.java)

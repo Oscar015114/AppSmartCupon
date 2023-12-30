@@ -4,155 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrearCuentaActivity"
-    android:orientation="vertical">
+    tools:context=".CrearCuentaActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/titulo_editar"
-        android:textColor="@color/negro"
-        android:textSize="28dp"
-        android:fontFamily="@font/poppins_semi_bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:text="@string/parrafo_editar"
-        android:textColor="@color/gris"
-        android:textSize="18dp"
-        android:fontFamily="@font/poppins_regular"
-        />
-
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/nombre_registrar"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input" />
-
-    <EditText
-        android:id="@+id/et_apellido_paterno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/apellidop_registrar"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input" />
-
-    <EditText
-        android:id="@+id/et_apellido_materno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/apellidom_registrar"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input" />
-
-    <EditText
-        android:id="@+id/et_telefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/telefono_registrar"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input"
-        android:inputType="phone" />
-
-    <EditText
-        android:id="@+id/et_contrasenia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/contrasenia_login"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input"
-        android:inputType="textPassword" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        >
-
-        <EditText
-            android:id="@+id/et_calle"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/calle_registrar"
-            android:padding="15dp"
-            android:textColor="@color/gris"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/titulo_editar"
+            android:textColor="@color/negro"
+            android:textSize="28dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:fontFamily="@font/poppins_regular"
-            android:background="@drawable/custom_input" />
+            android:text="@string/parrafo_editar"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/et_numero"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="@string/numero_registrar"
-            android:padding="15dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/gris"
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/custom_input"
             android:fontFamily="@font/poppins_regular"
-            android:background="@drawable/custom_input" />
+            android:hint="@string/nombre_registrar"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <EditText
+            android:id="@+id/et_apellido_paterno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/apellidop_registrar"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <EditText
+            android:id="@+id/et_apellido_materno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/apellidom_registrar"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <EditText
+            android:id="@+id/et_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/telefono_registrar"
+            android:inputType="phone"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <EditText
+            android:id="@+id/et_contrasenia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/contrasenia_login"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_calle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/custom_input"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/calle_registrar"
+                android:padding="15dp"
+                android:textColor="@color/gris" />
+
+            <EditText
+                android:id="@+id/et_numero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_input"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/numero_registrar"
+                android:padding="15dp"
+                android:textColor="@color/gris" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_fechaNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/fecha_registrar"
+            android:padding="15dp"
+            android:textColor="@color/gris" />
+
+        <Button
+            android:id="@+id/btnEditarCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/amarillo"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:letterSpacing="0"
+            android:paddingVertical="10dp"
+            android:text="@string/boton_editar"
+            android:textAllCaps="false"
+            android:textColor="@color/negro"
+            android:textSize="20dp" />
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/et_fechaNacimiento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="20dp"
-        android:hint="@string/fecha_registrar"
-        android:padding="15dp"
-        android:textColor="@color/gris"
-        android:fontFamily="@font/poppins_regular"
-        android:background="@drawable/custom_input" />
-
-    <Button
-        android:id="@+id/btnEditarCuenta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="20dp"
-        android:text="@string/boton_editar"
-        android:paddingVertical="10dp"
-        android:textSize="20dp"
-        android:textColor="@color/negro"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:textAllCaps="false"
-        android:letterSpacing="0"
-        android:backgroundTint="@color/amarillo"/>
-
-    </LinearLayout>
-
 </ScrollView>

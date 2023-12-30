@@ -1,5 +1,6 @@
 package com.example.appsmartcupon
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -52,17 +53,14 @@ class CategoriasActivity : AppCompatActivity(), NotificacionCategoriaLista {
 
     fun mostrarInformacionCategorias() {
         binding.recyclerCategorias.layoutManager = LinearLayoutManager(this@CategoriasActivity)
-        // binding.recyclerCategorias.setHasFixedSize(true)
         if (categorias.size > 0) {
             binding.recyclerCategorias.adapter = CategoriasAdapter(categorias, this)
         }
     }
 
     override fun clickItemListaCategoria(posicion: Int, categoria: Categoria) {
-        Toast.makeText(
-            this@CategoriasActivity,
-            categoria.categoria,
-            Toast.LENGTH_LONG
-        ).show()
+        val activityPromociones = Intent(this@CategoriasActivity, ListaPromocionesActivity::class.java)
+        activityPromociones.putExtra("idCategoria", categoria.idCategoria.toString())
+        startActivity(activityPromociones)
     }
 }

@@ -4,68 +4,204 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoriasActivity">
-
+    tools:context=".DetallePromocionesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
-        <Space
-            android:layout_width="11dp"
-            android:layout_height="17dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/titulo_detalle_promocion"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_fotografia_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_promocion" />
+
+        <TextView
+            android:id="@+id/tv_nombre_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Nombre de la promocion"
+            android:textAlignment="center"
+            android:textColor="@color/negro"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_porcentaje_descuento_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="$200"
+            android:textAlignment="center"
+            android:textColor="@color/negro"
+            android:textSize="22dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/tipo_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/tv_tipo_promocion_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Descuento"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/cupones_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/tv_cupones_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="20"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/codigo_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/tv_codigo_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="LOK73HY7"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/descripcion_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/tv_descripcion_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lorem_detalle_promocion"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/restriccion_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
+
+        <TextView
+            android:id="@+id/tv_restriccion_detalle_promocion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lorem_detalle_promocion"
+            android:textColor="@color/gris"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/fecha_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="@color/black"/>
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_fecha_inicio_detalle_promocion"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="     Detalle de promoción"
-                android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Inicio: 11-11-2023"
+                android:textColor="@color/gris"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_fecha_fin_detalle_promocion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Fin: 11-12-2023"
+                android:textAlignment="textEnd"
+                android:textColor="@color/gris"
+                android:textSize="18dp" />
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="16dp"/>
-
-        <ImageView
-            android:id="@+id/img_promocion"
-            android:layout_width="296dp"
-            android:layout_height="179dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/img_promocion" />
-
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/sucursal_detalle_promocion"
+            android:textColor="@color/negro"
+            android:textSize="19dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_detallePromociones"
+            android:id="@+id/recycler_sucursales"
             android:layout_width="match_parent"
-            android:layout_height="350dp" />
-
-        <TextView
-            android:id="@+id/tv_default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:text="La sucursal no cuenta por el momento con una promocion asignada"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

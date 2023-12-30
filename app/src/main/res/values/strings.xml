@@ -30,4 +30,18 @@
     <string name="boton_editar">Editar cuenta</string>
 
     <string name="titulo_categoria">Categorías</string>
+
+    <string name="titulo_promocion">Promociones</string>
+    <string name="error_promocion">No hay promociones</string>
+
+    <string name="titulo_detalle_promocion">Detalle de la promoción</string>
+    <string name="tipo_detalle_promocion">Tipo de promocion</string>
+    <string name="cupones_detalle_promocion">Cupones disponibles</string>
+    <string name="codigo_detalle_promocion">Código</string>
+    <string name="descripcion_detalle_promocion">Descripción</string>
+    <string name="restriccion_detalle_promocion">Restricciones</string>
+    <string name="fecha_detalle_promocion">Fecha de la promoción</string>
+    <string name="sucursal_detalle_promocion">Sucursales válidas</string>
+    <string name="lorem_detalle_promocion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus justo et urna tincidunt, ac venenatis libero fermentum. Quisque nec est ut neque eleifend malesuada. Integer facilisis eu metus nec dapibus</string>
+
 </resources>

@@ -1,67 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_listaPromociones"
+        android:id="@+id/card_promocion_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="15dp"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/custom_input"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_empresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Empresa: "
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Empresa que la oferta"
+                android:textColor="@color/gris"
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/tv_nombrePromocion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Nombre de la Promocion: "
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Nombre de la promocion"
+                android:textColor="@color/negro"
+                android:textSize="18dp" />
+
             <TextView
                 android:id="@+id/tv_tipoPromocion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Tipo de Promocion:"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Tipo promocion"
+                android:textColor="@color/gris"
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/tv_cantidadDescuento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Cantidad de descuento: "
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="$200"
+                android:textColor="@color/negro"
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/tv_cuponesDisponible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Cupones Disponibles: "
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Cupones disponibles"
+                android:textColor="@color/gris"
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/tv_vigencia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Vigencia:"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/poppins_medium"
+                android:text="Vigencia: 12-12-2023"
+                android:textColor="@color/gris"
+                android:textSize="14dp" />
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 
