@@ -23,14 +23,12 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
     private lateinit var binding: ActivityBusquedaPromocionesBinding
     private var promociones: ArrayList<Promocion> = ArrayList()
     private var empresas: ArrayList<Empresa> = ArrayList()
-    private var idEmpresa: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusquedaPromocionesBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        binding.tvError.visibility = View.GONE
 
         agregarEventos()
         obtenerEmpresas()
@@ -47,43 +45,68 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
             .setCallback { e, result ->
                 if (e == null && result != null) {
                     serializarInformacionPromocionesPorIdEmpresa(result)
-                    mostrarInformacionPromocionesPorNombre()
-                }else{
-                    Toast.makeText(
-                        this@BusquedaPromocionesActivity,
-                        "Error en la peticion",
-                        Toast.LENGTH_LONG
-                    ).show()
                 }
             }
+    }
+
+    fun obtenerEmpresas() {
+        Ion.with(this@BusquedaPromocionesActivity)
+            .load(
+                "GET",
+                "${Constantes.URL_WS}empresas/buscarEmpresas"
+            )
+            .asString()
+            .setCallback { e, result ->
+                if (e == null && result != null) {
+                    serializarInformacionEmpresas(result)
+                }
+            }
+    }
+
+    fun serializarInformacionEmpresas(json: String) {
+        val gson = Gson()
+        val respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
+        if (!respuesta.error) {
+            empresas = respuesta.empresas
+            rellenarSpinner()
+        }
     }
 
     fun serializarInformacionPromocionesPorIdEmpresa(json: String) {
         val gson = Gson()
         val respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
-        if(!respuesta.error){
-            promociones = respuesta.promociones
-        }
+        promociones = respuesta.promociones
+        mostrarInformacionPromocionesPorNombre()
+    }
+
+    override fun clickItemListaPromocion(posicion: Int, promocion: Promocion) {
+        val activityDetallePromocion = Intent(
+            this@BusquedaPromocionesActivity,
+            DetallePromocionesActivity::class.java
+        )
+        activityDetallePromocion.putExtra("idPromocion", promocion.idPromocion.toString())
+        startActivity(activityDetallePromocion)
     }
 
     fun mostrarInformacionPromocionesPorNombre() {
         binding.recyclerPromocionesEmpresa.layoutManager =
             LinearLayoutManager(this@BusquedaPromocionesActivity)
 
-        if (promociones.size > 0) {
-            binding.recyclerPromocionesEmpresa.adapter = PromocionBusquedaAdapter(promociones, this)
-        } else {
+        binding.tvError.visibility = View.GONE
+        binding.recyclerPromocionesEmpresa.adapter = PromocionBusquedaAdapter(promociones, this)
+
+        if (promociones.size <= 0) {
             binding.tvError.visibility = View.VISIBLE
         }
     }
 
-    fun rellenarSpinner(){
-    val adapter = ArrayAdapter(this@BusquedaPromocionesActivity,android.R.layout.simple_spinner_item,
-    empresas)
+    fun rellenarSpinner() {
+        val adapter = ArrayAdapter(
+            this@BusquedaPromocionesActivity, android.R.layout.simple_spinner_item,
+            empresas
+        )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spBusqueda.adapter = adapter
-
-
     }
 
     fun agregarEventos() {
@@ -92,10 +115,14 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
         }
 
         binding.spBusqueda.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
                 val selectedItem = parentView?.getItemAtPosition(position) as Empresa
-                 idEmpresa = selectedItem.idEmpresa
-                 descargarPromocionesPorIdEmpresa(idEmpresa)
+                descargarPromocionesPorIdEmpresa(selectedItem.idEmpresa)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -104,41 +131,5 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
         }
     }
 
-    fun obtenerEmpresas(){
-        Ion.with(this@BusquedaPromocionesActivity)
-            .load(
-                "GET",
-                "${Constantes.URL_WS}empresas/buscarEmpresas"
-            )
-            .asString()
-            .setCallback { e, result ->
-
-                if (e == null && result != null) {
-                    serializarInformacionEmpresas(result)
-                    rellenarSpinner()
-                }else{
-                    Toast.makeText(
-                        this@BusquedaPromocionesActivity,
-                        "Error en la peticion",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-    }
-
-    fun serializarInformacionEmpresas(json: String) {
-        val gson = Gson()
-        val respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
-        if(!respuesta.error){
-            empresas = respuesta.empresas
-        }
-    }
-
-    override fun clickItemListaPromocion(posicion: Int, promocion: Promocion) {
-        val activityDetallePromocion = Intent(this@BusquedaPromocionesActivity,
-            DetallePromocionesActivity::class.java)
-        activityDetallePromocion.putExtra("idPromocion", promocion.idPromocion.toString())
-        startActivity(activityDetallePromocion)
-    }
 }
 
