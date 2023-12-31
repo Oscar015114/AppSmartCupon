@@ -52,7 +52,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="$200"
                 android:textColor="@color/negro"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/tv_cuponesDisponible"
