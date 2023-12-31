@@ -8,5 +8,6 @@ class Mensaje {
     lateinit var promociones: ArrayList<Promocion>
     lateinit var promocion: Promocion
     lateinit var sucursales: ArrayList<Sucursal>
+    lateinit var empresas: ArrayList<Empresa>
 
 }

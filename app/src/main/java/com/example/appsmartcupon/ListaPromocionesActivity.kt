@@ -4,11 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appsmartcupon.databinding.ActivityListaPromocionesBinding
 import com.example.appsmartcupon.interfaces.NotificacionPromocionLista
-import com.example.appsmartcupon.poko.Categoria
 import com.example.appsmartcupon.poko.Mensaje
 import com.example.appsmartcupon.poko.Promocion
 import com.example.appsmartcupon.util.Constantes
@@ -59,6 +57,7 @@ class ListaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLista
     fun mostrarInformacionPromociones() {
         binding.recyclerPromociones.layoutManager =
             LinearLayoutManager(this@ListaPromocionesActivity)
+
         if (promociones.size > 0) {
             binding.recyclerPromociones.adapter = PromocionesAdapter(promociones, this)
         } else {
@@ -67,7 +66,8 @@ class ListaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLista
     }
 
     override fun clickItemListaPromocion(posicion: Int, promocion: Promocion) {
-        val activityDetallePromocion = Intent(this@ListaPromocionesActivity, DetallePromocionesActivity::class.java)
+        val activityDetallePromocion = Intent(this@ListaPromocionesActivity,
+            DetallePromocionesActivity::class.java)
         activityDetallePromocion.putExtra("idPromocion", promocion.idPromocion.toString())
         startActivity(activityDetallePromocion)
     }

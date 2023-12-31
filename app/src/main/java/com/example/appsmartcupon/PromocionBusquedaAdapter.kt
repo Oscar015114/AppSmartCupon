@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appsmartcupon.poko.Promocion
 import com.example.appsmartcupon.util.Constantes
 
-class PromocionesAdapter(val promociones: ArrayList<Promocion>, val observador: ListaPromocionesActivity):
-    RecyclerView.Adapter<PromocionesAdapter.ViewHolderPromociones>(){
+class PromocionBusquedaAdapter(val promociones: ArrayList<Promocion>, val observador: BusquedaPromocionesActivity):
+    RecyclerView.Adapter<PromocionBusquedaAdapter.ViewHolderPromociones>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderPromociones {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_lista_promociones, parent, false)
