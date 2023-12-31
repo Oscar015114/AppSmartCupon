@@ -44,4 +44,7 @@
     <string name="sucursal_detalle_promocion">Sucursales válidas</string>
     <string name="lorem_detalle_promocion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus justo et urna tincidunt, ac venenatis libero fermentum. Quisque nec est ut neque eleifend malesuada. Integer facilisis eu metus nec dapibus</string>
 
+    <string name="titulo_busqueda">Búsqueda</string>
+    <string name="input_busqueda">Ingresa la fecha. Ej. 2023-12-31</string>
+    <string name="boton_busqueda">Buscar</string>
 </resources>
