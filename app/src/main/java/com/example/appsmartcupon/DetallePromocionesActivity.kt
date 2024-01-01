@@ -3,15 +3,12 @@ package com.example.appsmartcupon
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appsmartcupon.databinding.ActivityDetallePromocionesBinding
 import com.example.appsmartcupon.poko.Mensaje
 import com.example.appsmartcupon.poko.Promocion
 import com.example.appsmartcupon.poko.Sucursal
 import com.example.appsmartcupon.util.Constantes
-import com.example.appsmartcupon.util.SucursalesAdapter
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 

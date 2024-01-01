@@ -124,17 +124,20 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/et_fechaNacimiento"
+        <Button
+            android:id="@+id/btn_seleccionar_fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/custom_input"
+            android:backgroundTint="@color/gris_claro"
             android:fontFamily="@font/poppins_regular"
-            android:hint="@string/fecha_registrar"
-            android:padding="15dp"
-            android:textColor="@color/gris" />
+            android:letterSpacing="0"
+            android:paddingVertical="10dp"
+            android:text="@string/fecha_registrar"
+            android:textAllCaps="false"
+            android:textColor="@color/negro"
+            android:textSize="18dp" />
 
         <Button
             android:id="@+id/btnEditarCuenta"

@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/poppins_semi_bold"
-            android:text="Nombre de la promocion"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/negro"
             android:textSize="25dp" />
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
-            android:text="$200"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/negro"
             android:textSize="22dp" />
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Descuento"
+            android:text=""
             android:textColor="@color/gris"
             android:textSize="18dp" />
 
@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="20"
+            android:text=""
             android:textColor="@color/gris"
             android:textSize="18dp" />
 
@@ -111,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="LOK73HY7"
+            android:text=""
             android:textColor="@color/gris"
             android:textSize="18dp" />
 
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/lorem_detalle_promocion"
+            android:text=""
             android:textColor="@color/gris"
             android:textSize="18dp" />
 
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/lorem_detalle_promocion"
+            android:text=""
             android:textColor="@color/gris"
             android:textSize="18dp" />
 
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Inicio: 11-11-2023"
+                android:text=""
                 android:textColor="@color/gris"
                 android:textSize="18dp" />
 
@@ -182,7 +182,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Fin: 11-12-2023"
+                android:text=""
                 android:textAlignment="textEnd"
                 android:textColor="@color/gris"
                 android:textSize="18dp" />
@@ -196,7 +196,8 @@
             android:fontFamily="@font/poppins_medium"
             android:text="@string/sucursal_detalle_promocion"
             android:textColor="@color/negro"
-            android:textSize="19dp" />
+            android:textSize="19dp"
+            android:layout_marginBottom="5dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_sucursales"

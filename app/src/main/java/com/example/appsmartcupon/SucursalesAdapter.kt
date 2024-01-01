@@ -1,11 +1,10 @@
-package com.example.appsmartcupon.util
+package com.example.appsmartcupon
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appsmartcupon.R
 import com.example.appsmartcupon.poko.Sucursal
 
 class SucursalesAdapter (val sucursales: ArrayList<Sucursal>):

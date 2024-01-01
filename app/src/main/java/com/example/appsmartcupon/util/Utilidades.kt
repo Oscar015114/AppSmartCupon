@@ -3,7 +3,6 @@ package com.example.appsmartcupon.util
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
-
 object Utilidades {
 
     const val EMAIL_REGEX: String = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
@@ -19,7 +18,7 @@ object Utilidades {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val fechaLocal = LocalDate.parse(fecha, formatter)
             return false
-        } catch (e: Exception) {
+        } catch (e: org.threeten.bp.format.DateTimeParseException) {
             return true
         }
     }

@@ -24,35 +24,23 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="60dp"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="5dp"/>
-
-    <EditText
-        android:id="@+id/edtFecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/custom_input"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="@string/input_busqueda"
-        android:padding="15dp"
-        android:textColor="@color/gris" />
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="20dp" />
 
     <Button
-        android:id="@+id/btnBusqueda"
+        android:id="@+id/btnMostrarDatePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppins_semi_bold"
+        android:backgroundTint="@color/gris_claro"
+        android:fontFamily="@font/poppins_regular"
         android:letterSpacing="0"
         android:paddingVertical="10dp"
-        android:text="@string/boton_busqueda"
+        android:text="Buscar por fecha"
         android:textAllCaps="false"
         android:textColor="@color/negro"
-        android:textSize="20dp"
-        android:backgroundTint="@color/amarillo"/>
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/tv_error"
@@ -61,9 +49,9 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/error_promocion"
+        android:textAlignment="center"
         android:textColor="@color/gris"
-        android:textSize="16dp"
-        android:textAlignment="center"/>
+        android:textSize="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_promocionesEmpresa"

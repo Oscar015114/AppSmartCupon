@@ -1,5 +1,6 @@
 package com.example.appsmartcupon
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,10 +16,12 @@ import com.example.appsmartcupon.util.Constantes
 import com.example.appsmartcupon.util.Utilidades
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
+import java.util.Calendar
 
 class CrearCuentaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCrearCuentaBinding
+    private var fechaNacimiento: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,18 +44,52 @@ class CrearCuentaActivity : AppCompatActivity() {
             val calle = binding.etCalle.text.toString()
             val numero = binding.etNumero.text.toString()
             val contrasenia = binding.etContrasenia.text.toString()
-            val fechaNacimiento = binding.etFechaNacimiento.text.toString()
 
-            if (this.camposVacios(nombre, apellidoPaterno, apellidoMaterno, telefono, correo, calle, numero, contrasenia, fechaNacimiento)) {
-                enviarDatos(nombre, apellidoPaterno, apellidoMaterno, telefono, correo, calle, numero, contrasenia, fechaNacimiento)
+            // val fechaNacimiento = binding.etFechaNacimiento.text.toString()
+
+            if (this.camposVacios(
+                    nombre,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    telefono,
+                    correo,
+                    calle,
+                    numero,
+                    contrasenia,
+                    fechaNacimiento
+                )
+            ) {
+                enviarDatos(
+                    nombre,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    telefono,
+                    correo,
+                    calle,
+                    numero,
+                    contrasenia,
+                    fechaNacimiento
+                )
             }
+        }
+
+        binding.btnSeleccionarFecha.setOnClickListener {
+            mostrarDatePicker()
         }
 
     }
 
     fun camposVacios(
-        nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
-        calle: String, numero: String, contrasenia: String, fechaNacimiento: String): Boolean {
+        nombre: String,
+        apellidoPaterno: String,
+        apellidoMaterno: String,
+        telefono: String,
+        correo: String,
+        calle: String,
+        numero: String,
+        contrasenia: String,
+        fechaNacimiento: String
+    ): Boolean {
         var camposValidos = true
 
         if (nombre.isEmpty()) {
@@ -87,8 +124,9 @@ class CrearCuentaActivity : AppCompatActivity() {
             binding.etContrasenia.error = Constantes.CAMPOS_OBLIGATORIOS
             camposValidos = false
         }
-        if (fechaNacimiento.isEmpty() || Utilidades.validarFecha(fechaNacimiento)) {
-            binding.etFechaNacimiento.error = Constantes.CAMPOS_OBLIGATORIOS
+        if (fechaNacimiento.isEmpty()) {
+            Toast.makeText(this@CrearCuentaActivity, "Selecciona una fecha.", Toast.LENGTH_LONG)
+                .show()
             camposValidos = false
         }
 
@@ -96,8 +134,16 @@ class CrearCuentaActivity : AppCompatActivity() {
     }
 
     fun enviarDatos(
-        nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String, correo: String,
-        calle: String, numero: String, contrasenia: String, fechaNacimiento: String) {
+        nombre: String,
+        apellidoPaterno: String,
+        apellidoMaterno: String,
+        telefono: String,
+        correo: String,
+        calle: String,
+        numero: String,
+        contrasenia: String,
+        fechaNacimiento: String
+    ) {
 
         Ion.with(this@CrearCuentaActivity)
             .load("POST", Constantes.URL_WS + "clientes/registrarCliente")
@@ -143,6 +189,25 @@ class CrearCuentaActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
+    }
+
+    private fun mostrarDatePicker() {
+        val calendario = Calendar.getInstance()
+        val anio = calendario.get(Calendar.YEAR)
+        val mes = calendario.get(Calendar.MONTH)
+        val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                fechaNacimiento = "$year-${month + 1}-$dayOfMonth"
+            },
+            anio,
+            mes,
+            dia
+        )
+
+        datePickerDialog.show()
     }
 
 }

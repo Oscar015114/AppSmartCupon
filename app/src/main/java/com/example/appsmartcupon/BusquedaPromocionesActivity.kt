@@ -1,5 +1,6 @@
 package com.example.appsmartcupon
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.example.appsmartcupon.poko.Promocion
 import com.example.appsmartcupon.util.Constantes
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
+import java.util.Calendar
 
 class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLista {
 
@@ -44,7 +46,7 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
             .asString()
             .setCallback { e, result ->
                 if (e == null && result != null) {
-                    serializarInformacionPromocionesPorIdEmpresa(result)
+                    serializarInformacionPromociones(result)
                 }
             }
     }
@@ -63,6 +65,20 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
             }
     }
 
+    fun obtenerPromocionesPorFechaFin(fechaFin: String) {
+        Ion.with(this@BusquedaPromocionesActivity)
+            .load(
+                "GET",
+                "${Constantes.URL_WS}promociones/buscarPromocionesPorFechaFin/${fechaFin}"
+            )
+            .asString()
+            .setCallback { e, result ->
+                if (e == null && result != null) {
+                    serializarInformacionPromociones(result)
+                }
+            }
+    }
+
     fun serializarInformacionEmpresas(json: String) {
         val gson = Gson()
         val respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
@@ -72,7 +88,7 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
         }
     }
 
-    fun serializarInformacionPromocionesPorIdEmpresa(json: String) {
+    fun serializarInformacionPromociones(json: String) {
         val gson = Gson()
         val respuesta: Mensaje = gson.fromJson(json, Mensaje::class.java)
         promociones = respuesta.promociones
@@ -110,10 +126,6 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
     }
 
     fun agregarEventos() {
-        binding.btnBusqueda.setOnClickListener {
-
-        }
-
         binding.spBusqueda.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
@@ -129,6 +141,33 @@ class BusquedaPromocionesActivity : AppCompatActivity(), NotificacionPromocionLi
 
             }
         }
+
+        binding.btnMostrarDatePicker.setOnClickListener {
+            mostrarDatePicker()
+        }
+    }
+
+    private fun mostrarDatePicker() {
+        val calendario = Calendar.getInstance()
+        val anio = calendario.get(Calendar.YEAR)
+        val mes = calendario.get(Calendar.MONTH)
+        val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+
+                val selectedDate = "$year-${month + 1}-$dayOfMonth"
+
+                obtenerPromocionesPorFechaFin(selectedDate)
+
+            },
+            anio,
+            mes,
+            dia
+        )
+
+        datePickerDialog.show()
     }
 
 }

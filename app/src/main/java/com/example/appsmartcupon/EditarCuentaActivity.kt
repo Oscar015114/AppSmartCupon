@@ -1,5 +1,6 @@
 package com.example.appsmartcupon
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,11 +12,13 @@ import com.example.appsmartcupon.util.Constantes
 import com.example.appsmartcupon.util.Utilidades
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
+import java.util.Calendar
 
 class EditarCuentaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditarCuentaBinding
     private lateinit var cliente: Cliente
+    private var fechaNacimiento: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +29,12 @@ class EditarCuentaActivity : AppCompatActivity() {
 
         val jsonCliente = intent.getStringExtra("cliente")
 
-        if(jsonCliente != null){
+        if (jsonCliente != null) {
             serializarCliente(jsonCliente)
             cargarDatosCliente()
         }
 
-        binding.btnEditarCuenta.setOnClickListener{
+        binding.btnEditarCuenta.setOnClickListener {
 
             val idCliente = cliente.idCliente
             val nombre = binding.etNombre.text.toString()
@@ -41,22 +44,45 @@ class EditarCuentaActivity : AppCompatActivity() {
             val calle = binding.etCalle.text.toString()
             val numero = binding.etNumero.text.toString()
             val contrasenia = binding.etContrasenia.text.toString()
-            val fechaNacimiento = binding.etFechaNacimiento.text.toString()
 
-            if (camposVacios(nombre, apellidoPaterno, apellidoMaterno, telefono, calle, numero, contrasenia, fechaNacimiento)) {
-                enviarDatos(idCliente, nombre, apellidoPaterno, apellidoMaterno, telefono, calle, numero, contrasenia, fechaNacimiento)
+            if (camposVacios(
+                    nombre,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    telefono,
+                    calle,
+                    numero,
+                    contrasenia,
+                    fechaNacimiento
+                )
+            ) {
+                enviarDatos(
+                    idCliente,
+                    nombre,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    telefono,
+                    calle,
+                    numero,
+                    contrasenia,
+                    fechaNacimiento
+                )
             }
+        }
+
+        binding.btnSeleccionarFecha.setOnClickListener {
+            mostrarDatePicker()
         }
     }
 
-    fun serializarCliente(json : String){
+    fun serializarCliente(json: String) {
         val gson = Gson()
         cliente = gson.fromJson(json, Cliente::class.java)
         cargarDatosCliente()
     }
 
-    fun cargarDatosCliente(){
-        if(cliente != null) {
+    fun cargarDatosCliente() {
+        if (cliente != null) {
             binding.etNombre.setText(cliente.nombre)
             binding.etApellidoPaterno.setText(cliente.apellidoPaterno)
             binding.etApellidoMaterno.setText(cliente.apellidoMaterno)
@@ -64,13 +90,21 @@ class EditarCuentaActivity : AppCompatActivity() {
             binding.etContrasenia.setText(cliente.contrasenia)
             binding.etCalle.setText(cliente.calle)
             binding.etNumero.setText(cliente.numero.toString())
-            binding.etFechaNacimiento.setText(cliente.fechaNacimiento)
+            fechaNacimiento = cliente.fechaNacimiento
         }
     }
 
     fun enviarDatos(
-        idCliente: Int, nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String,
-        calle: String, numero: String, contrasenia: String, fechaNacimiento: String){
+        idCliente: Int,
+        nombre: String,
+        apellidoPaterno: String,
+        apellidoMaterno: String,
+        telefono: String,
+        calle: String,
+        numero: String,
+        contrasenia: String,
+        fechaNacimiento: String
+    ) {
 
         Ion.with(this@EditarCuentaActivity)
             .load("PUT", Constantes.URL_WS + "clientes/editarCliente")
@@ -112,7 +146,8 @@ class EditarCuentaActivity : AppCompatActivity() {
 
     fun camposVacios(
         nombre: String, apellidoPaterno: String, apellidoMaterno: String, telefono: String,
-        calle: String, numero: String, contrasenia: String, fechaNacimiento: String): Boolean {
+        calle: String, numero: String, contrasenia: String, fechaNacimiento: String
+    ): Boolean {
         var camposValidos = true
 
         if (nombre.isEmpty()) {
@@ -143,12 +178,32 @@ class EditarCuentaActivity : AppCompatActivity() {
             binding.etContrasenia.error = Constantes.CAMPOS_OBLIGATORIOS
             camposValidos = false
         }
-        if (fechaNacimiento.isEmpty() || Utilidades.validarFecha(fechaNacimiento)) {
-            binding.etFechaNacimiento.error = Constantes.CAMPOS_OBLIGATORIOS
+        if (fechaNacimiento.isEmpty()) {
+            Toast.makeText(this@EditarCuentaActivity, "Selecciona una fecha.", Toast.LENGTH_LONG)
+                .show()
             camposValidos = false
         }
 
         return camposValidos
+    }
+
+    private fun mostrarDatePicker() {
+        val calendario = Calendar.getInstance()
+        val anio = calendario.get(Calendar.YEAR)
+        val mes = calendario.get(Calendar.MONTH)
+        val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            { _, year, month, dayOfMonth ->
+                fechaNacimiento = "$year-${month + 1}-$dayOfMonth"
+            },
+            anio,
+            mes,
+            dia
+        )
+
+        datePickerDialog.show()
     }
 
 }
