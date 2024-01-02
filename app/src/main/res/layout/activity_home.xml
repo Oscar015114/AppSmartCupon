@@ -128,9 +128,10 @@
                 android:src="@drawable/ic_search" />
 
             <TextView
-                android:layout_width="211dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
+                android:maxWidth="200dp"
                 android:text="@string/busqueda_promocion_home"
                 android:textColor="@color/negro"
                 android:textSize="20dp" />
